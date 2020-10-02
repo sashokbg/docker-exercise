@@ -3,6 +3,8 @@
     docker run -p 3306:3306 --network www-net --name some-mariadb -e MYSQL_DATABASE=visits -e MYSQL_ROOT_PASSWORD=my-secret-pw -d -v /home/alexander/projects/docker-exercise/src/main/resources/sql:/docker-entrypoint-initdb.d mariadb
     ```
   
+ https://github.com/vishnubob/wait-for-it
+ 
 1) Installer et configurer docker et docker-compose (attention à bien suivre le guide dans le site officiel docker)
 2) (Optionnel) Faite marcher docker sans sudo
 3) Préparez un spring boot qui utilise JPA (service back)
