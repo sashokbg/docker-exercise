@@ -3,7 +3,7 @@ spring:
     password: my-secret-pw
     username: root
     name: visits
-    url: jdbc:mysql://localhost:3306/visits
+    url: jdbc:mysql://some-mariadb:3306/visits
     driverClassName: com.mysql.cj.jdbc.Driver
 
   jpa:

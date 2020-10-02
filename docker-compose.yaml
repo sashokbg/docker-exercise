@@ -1,0 +1,33 @@
+version: "3.7"
+
+services:
+  some-mariadb:
+    image: mariadb
+    networks:
+      - www-net
+    environment:
+    - "MYSQL_DATABASE=visits"
+    - "MYSQL_ROOT_PASSWORD=my-secret-pw"
+    volumes:
+    - ./src/main/resources/sql:/docker-entrypoint-initdb.d
+    - db-persistent-vol:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+  web:
+    image: app
+    build:
+      context: .
+    ports:
+    - 8080:8080
+    networks:
+      - www-net
+    depends_on:
+      - some-mariadb
+
+volumes:
+  db-persistent-vol:
+
+networks:
+  www-net:
